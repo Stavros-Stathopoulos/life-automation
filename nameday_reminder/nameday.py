@@ -1,5 +1,7 @@
 import os
 import time
+from pathlib import Path
+
 import requests
 from dotenv import load_dotenv
 '''
@@ -11,7 +13,8 @@ curl --request GET \
 	--header 'x-rapidapi-host: greek-eortologio.p.rapidapi.com' \
 	--header 'x-rapidapi-key: ' + os.getenv("API_KEY")
 '''
-load_dotenv()
+# Load this package's own .env regardless of the current working directory.
+load_dotenv(Path(__file__).resolve().parent / ".env")
 URL = "https://greek-eortologio.p.rapidapi.com/"
 
 def get_nameday(
